@@ -1,13 +1,29 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  次の <META> 要素を、HTML の <HEAD>タグ間に追加してください。必要に応じて、charset                  -->
-<!--  パラメーターを変更して、HTML ページの文字コードを指定してください。                                    -->
-<!--  ----------------------------------------------------------------------  -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+  <title>アカウント・請求先情報フォーム</title>
 
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+  <script>
+    // URL から日本語含むパラメータを取得
+    const params = new URLSearchParams(window.location.search);
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  次の <FORM> 要素をページに追加してください。                                              -->
-<!--  ----------------------------------------------------------------------  -->
+    const BusinessAccountId = params.get("accountId") || "";
+    const BusinessName      = decodeURIComponent(params.get("accountName") || "");
+    const OpportunityId     = params.get("opptyId") || "";
+
+    // HTML 内の {{}} を置換
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.innerHTML = document.body.innerHTML
+        .replace(/{{BusinessAccountId}}/g, BusinessAccountId)
+        .replace(/{{BusinessName}}/g, BusinessName)
+        .replace(/{{OpportunityId}}/g, OpportunityId);
+    });
+  </script>
+</head>
+
+<body>
 
 <form action="https://rehabforjapan--testmrgc.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DBK00000416sH" method="POST">
 
@@ -18,16 +34,9 @@
   <input type="hidden" name="orgid" value="00DBK00000416sH">
   <input type="hidden" name="retURL" value="https://rehabforjapan.com/">
 
-  <!-- ケース紐づけ用 hidden（事業所・商談） -->
+  <!-- ケース紐づけ hidden -->
   <input type="hidden" name="AccountId" value="{{BusinessAccountId}}">
   <input type="hidden" name="OpportunityId__c" value="{{OpportunityId}}">
-
-  <!--  ----------------------------------------------------------------------  -->
-  <!--  注意: これらの項目は、省略可能なデバッグ用要素です。デバッグモードでテストを行う場合は、これらの行をコメント解除してください。        -->
-  <!--  <input type="hidden" name="debug" value=1>                              -->
-  <!--  <input type="hidden" name="debugEmail"                                  -->
-  <!--  value="takayuki.suzuki@rehabforjapan.com">                              -->
-  <!--  ----------------------------------------------------------------------  -->
 
   アカウント_姓:
   <input id="00NBK0000065l7h" maxlength="255" name="00NBK0000065l7h" size="20" type="text" /><br>
@@ -85,3 +94,6 @@
   <input type="submit" name="submit">
 
 </form>
+
+</body>
+</html>
