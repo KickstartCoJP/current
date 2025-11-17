@@ -27,16 +27,18 @@
 
 <form action="https://rehabforjapan--testmrgc.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DBK00000416sH" method="POST">
 
-  <!-- 顧客向け：事業所名表示 -->
-  <h2>【事業所：{{BusinessName}}】</h2>
-  <p>この事業所のアカウント情報および請求先情報を入力してください。</p>
-
   <input type="hidden" name="orgid" value="00DBK00000416sH">
   <input type="hidden" name="retURL" value="https://rehabforjapan.com/">
 
-  <!-- ケース紐づけ hidden -->
-  <input type="hidden" name="AccountId" value="{{BusinessAccountId}}">
-  <input type="hidden" name="OpportunityId__c" value="{{OpportunityId}}">
+  <!-- ここが今回の最重要ポイント：hidden に自動セットする -->
+  <!-- 商談ID（OpportunityId__c） -->
+  <input type="hidden" id="00NBK0000065r53" name="00NBK0000065r53" value="{{OpportunityId}}">
+
+  <!-- 取引先ID（AccountId__c） -->
+  <input type="hidden" id="00NBK0000066D2L" name="00NBK0000066D2L" value="{{BusinessAccountId}}">
+
+  <h2>【事業所：{{BusinessName}}】</h2>
+  <p>この事業所のアカウント情報および請求先情報を入力してください。</p>
 
   アカウント_姓:
   <input id="00NBK0000065l7h" maxlength="255" name="00NBK0000065l7h" size="20" type="text" /><br>
