@@ -1,0 +1,87 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  次の <META> 要素を、HTML の <HEAD>タグ間に追加してください。必要に応じて、charset                  -->
+<!--  パラメーターを変更して、HTML ページの文字コードを指定してください。                                    -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  次の <FORM> 要素をページに追加してください。                                              -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://rehabforjapan--testmrgc.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DBK00000416sH" method="POST">
+
+  <!-- 顧客向け：事業所名表示 -->
+  <h2>【事業所：{{BusinessName}}】</h2>
+  <p>この事業所のアカウント情報および請求先情報を入力してください。</p>
+
+  <input type="hidden" name="orgid" value="00DBK00000416sH">
+  <input type="hidden" name="retURL" value="https://rehabforjapan.com/">
+
+  <!-- ケース紐づけ用 hidden（事業所・商談） -->
+  <input type="hidden" name="AccountId" value="{{BusinessAccountId}}">
+  <input type="hidden" name="OpportunityId__c" value="{{OpportunityId}}">
+
+  <!--  ----------------------------------------------------------------------  -->
+  <!--  注意: これらの項目は、省略可能なデバッグ用要素です。デバッグモードでテストを行う場合は、これらの行をコメント解除してください。        -->
+  <!--  <input type="hidden" name="debug" value=1>                              -->
+  <!--  <input type="hidden" name="debugEmail"                                  -->
+  <!--  value="takayuki.suzuki@rehabforjapan.com">                              -->
+  <!--  ----------------------------------------------------------------------  -->
+
+  アカウント_姓:
+  <input id="00NBK0000065l7h" maxlength="255" name="00NBK0000065l7h" size="20" type="text" /><br>
+
+  アカウント_名:
+  <input id="00NBK0000065hCH" maxlength="255" name="00NBK0000065hCH" size="20" type="text" /><br>
+
+  アカウント_セイ:
+  <input id="00NBK0000065gZS" maxlength="255" name="00NBK0000065gZS" size="20" type="text" /><br>
+
+  アカウント_メイ:
+  <input id="00NBK0000065lFl" maxlength="255" name="00NBK0000065lFl" size="20" type="text" /><br>
+
+  <label for="email">メール</label>
+  <input id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+  請求先名:
+  <input id="00NBK0000065lsT" maxlength="255" name="00NBK0000065lsT" size="20" type="text" /><br>
+
+  請求先担当者名:
+  <input id="00NBK0000065bjU" maxlength="255" name="00NBK0000065bjU" size="20" type="text" /><br>
+
+  請求先電話番号:
+  <input id="00NBK0000065l2s" maxlength="255" name="00NBK0000065l2s" size="20" type="text" /><br>
+
+  請求先メールアドレス:
+  <input id="00NBK0000065m3l" maxlength="80" name="00NBK0000065m3l" size="20" type="text" /><br>
+
+  請求先郵便番号:
+  <input id="00NBK0000065mLV" maxlength="255" name="00NBK0000065mLV" size="20" type="text" /><br>
+
+  請求先住所（都道府県）:
+  <input id="00NBK0000065hVj" maxlength="255" name="00NBK0000065hVj" size="20" type="text" /><br>
+
+  請求先住所（市区郡）:
+  <input id="00NBK0000065mOj" maxlength="255" name="00NBK0000065mOj" size="20" type="text" /><br>
+
+  請求先住所（町名番地）:
+  <input id="00NBK0000065lu6" maxlength="255" name="00NBK0000065lu6" size="20" type="text" /><br>
+
+  支払方式:
+  <select id="00NBK0000065gbI" name="00NBK0000065gbI" title="支払方式">
+    <option value="">--なし--</option>
+    <option value="マネーフォワードケッサイ（口座振替）">マネーフォワードケッサイ（口座振替）</option>
+    <option value="マネーフォワードケッサイ（銀行振替）">マネーフォワードケッサイ（銀行振替）</option>
+  </select><br>
+
+  通知方法:
+  <select id="00NBK0000065mbd" name="00NBK0000065mbd" title="通知方法">
+    <option value="">--なし--</option>
+    <option value="メール">メール</option>
+    <option value="郵送">郵送</option>
+  </select><br>
+
+  <input type="submit" name="submit">
+
+</form>
